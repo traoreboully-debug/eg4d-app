@@ -1,0 +1,49 @@
+{
+  "name": "eg4d",
+  "version": "1.0.0",
+  "description": "EG4D — Gestion des interventions nuisibles",
+  "main": "main.js",
+  "author": "EG4D",
+  "license": "ISC",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-builder --win --x64",
+    "build-android": "npx cap sync android && npx cap open android"
+  },
+  "devDependencies": {
+    "electron": "33.0.0",
+    "electron-builder": "24.13.3"
+  },
+  "build": {
+    "appId": "com.eg4d.app",
+    "productName": "EG4D",
+    "win": {
+      "target": "nsis",
+      "icon": "src/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "src/icon.ico",
+      "uninstallerIcon": "src/icon.ico",
+      "installerHeaderIcon": "src/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "EG4D"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.3.4",
+    "@capacitor/cli": "^7.6.5",
+    "@capacitor/core": "^8.3.4",
+    "electron": "latest"
+  }
+}
